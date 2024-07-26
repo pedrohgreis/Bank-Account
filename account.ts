@@ -1,3 +1,6 @@
+const promptSync = require('prompt-sync');
+const userPrompt = promptSync();
+
 class ContaPF {
     nome: string;
     cpf: string;
@@ -48,17 +51,17 @@ do {
     console.log("- 3 Banco PAN               -");
     console.log("-----------------------------");
 
-    escolha = parseInt(prompt("Escolha uma instituição (1, 2 ou 3):") || "0");
+    escolha = parseInt(userPrompt("Escolha uma instituição (1, 2 ou 3):") || "0");
 
-    switch(escolha) {
+    switch (escolha) {
         case 1:
-            BTG();
+            console.log("Você escolheu BTG Pactual!");
             break;
         case 2:
-            BancoDoBrasil();
+            console.log("Você escolheu Banco do Brasil!");
             break;
         case 3:
-            BancoPAN();
+            console.log("Você escolheu Banco PAN!");
             break;
         default:
             console.log("Alternativa inválida, tente novamente!");
@@ -66,3 +69,4 @@ do {
     }
 
 } while (escolha < 1 || escolha > 3);
+
