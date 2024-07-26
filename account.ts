@@ -1,45 +1,59 @@
-const promptSync = require('prompt-sync');
+import promptSync from 'prompt-sync';
+import Conta from './conta';
+import PJ from './PJ';
+import PF from './PF';
+
+
 const userPrompt = promptSync();
 
-class ContaPF {
-    nome: string;
-    cpf: string;
-    saldo: number;
-    extrato: number;
+const User1: Conta = new Conta(["João"], 2500);
+const User2: Conta = new Conta(["Thiago"], 8500);
 
-    constructor(nome: string, cpf: string, saldo: number, extrato: number) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.saldo = saldo;
-        this.extrato = extrato;
-    }
-}
+const User3: PJ = new PJ("12.345.678/0001-99", User1.nome, User1.saldo);
+const User4: PF = new PF("056.787.985-09", User2.nome, User2.saldo);
 
-class ContaPJ {
-    nome: string;
-    cnpj: string;
-    saldo: number;
-    extrato: number;
+User3.info();
+User4.info();
 
-    constructor(nome: string, cnpj: string, saldo: number, extrato: number) {
-        this.nome = nome;
-        this.cnpj = cnpj;
-        this.saldo = saldo;
-        this.extrato = extrato;
-    }
-}
+// class ContaPF {
+//     nome: string;
+//     cpf: string;
+//     saldo: number;
+//     extrato: number;
 
-class Banco {
-    banco: string;
-    contaPF: ContaPF | null;
-    contaPJ: ContaPJ | null;
+//     constructor(nome: string, cpf: string, saldo: number, extrato: number) {
+//         this.nome = nome;
+//         this.cpf = cpf;
+//         this.saldo = saldo;
+//         this.extrato = extrato;
+//     }
+// }
 
-    constructor(banco: string, contaPF: ContaPF | null, contaPJ: ContaPJ | null) {
-        this.banco = banco;
-        this.contaPF = contaPF;
-        this.contaPJ = contaPJ;
-    }
-}
+// class ContaPJ {
+//     nome: string;
+//     cnpj: string;
+//     saldo: number;
+//     extrato: number;
+
+//     constructor(nome: string, cnpj: string, saldo: number, extrato: number) {
+//         this.nome = nome;
+//         this.cnpj = cnpj;
+//         this.saldo = saldo;
+//         this.extrato = extrato;
+//     }
+// }
+
+// class Banco {
+//     banco: string;
+//     contaPF: ContaPF | null;
+//     contaPJ: ContaPJ | null;
+
+//     constructor(banco: string, contaPF: ContaPF | null, contaPJ: ContaPJ | null) {
+//         this.banco = banco;
+//         this.contaPF = contaPF;
+//         this.contaPJ = contaPJ;
+//     }
+// }
 
 let escolha: number;
 do {
