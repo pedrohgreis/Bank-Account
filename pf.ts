@@ -9,4 +9,25 @@ export default class PF extends Conta{
     }
 
     //Métodos
+
+    saque(valor: number): void{
+        if(valor > 0 || valor <= this.saldo || valor <= 300){
+            console.log("Saque realizado!");
+            super.saque(valor)
+        }
+        else{
+            console.log("Não foi posspível realizar o saque!");
+        }
+    }
+
+     deposito(valor: number): void {
+        if(valor > 0 || valor <= 500){
+            console.log(("Deposito realizado!"));
+            super.deposito(valor)
+        }
+        else{
+            console.log("Não foi posspível realizar o depósito!");
+        }
+    }
+
 }

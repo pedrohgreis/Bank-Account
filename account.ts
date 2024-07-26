@@ -84,3 +84,33 @@ do {
 
 } while (escolha < 1 || escolha > 3);
 
+do {
+    console.log("-----------------------------");
+    console.log("---SELECIONE UMA OPÇÃO---");
+    console.log("-----------------------------");
+    console.log("- 1 SACAR                   -");
+    console.log("- 2 DEPOSITAR               -");
+    console.log("- 3 VISUALIZAR              -");
+    console.log("- 4 EXTRATO                 -");
+    console.log("- 0 SAIR                    -");
+    console.log("-----------------------------");
+
+    escolha = parseInt(userPrompt("Escolha uma instituição (1, 2 ou 3):") || "0");
+
+    switch (escolha) {
+        case 1:
+            console.log("Digite o valor do saque");
+            break;
+        case 2:
+            console.log("Digite o valor do deposito");
+            break;
+        case 3:
+            
+            break;
+        default:
+            
+            break;
+    }
+
+} while (escolha < 1 || escolha > 3);
+
