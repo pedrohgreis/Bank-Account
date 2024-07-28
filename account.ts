@@ -15,6 +15,27 @@ const User4: PF = new PF("056.787.985-09", User2.nome, User2.saldo, User2.numero
 
 let escolha: number;
 
+let login: number;
+let xd: number = 0;
+let continueLoop: boolean = true;
+
+do {
+    console.log("-----------------------------");
+    console.log("Digite seu login:            ");
+    console.log("-----------------------------");
+
+    login = parseInt(userPrompt("Digite aqui: ") || "0");
+
+    if (login === 1234) {
+        xd = 1;
+    } else if (login === 4321) {
+        xd = 2;
+    } else {
+        console.log("Erro404!");
+    }
+} while (continueLoop);
+
+
 do {
     console.log("-----------------------------");
     console.log("---SELECIONE UMA OPÇÃO---");
