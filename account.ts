@@ -6,14 +6,12 @@ import PF from './PF';
 
 const userPrompt = promptSync();
 
-const User1: Conta = new Conta(["João"], 2500);
-const User2: Conta = new Conta(["Thiago"], 8500);
+const User1: Conta = new Conta(["João"], 2500, 123);
+const User2: Conta = new Conta(["Thiago"], 8500, 456);
 
-const User3: PJ = new PJ("12.345.678/0001-99", User1.nome, User1.saldo);
-const User4: PF = new PF("056.787.985-09", User2.nome, User2.saldo);
+const User3: PJ = new PJ("12.345.678/0001-99", User1.nome, User1.saldo, User1.numero);
+const User4: PF = new PF("056.787.985-09", User2.nome, User2.saldo, User2.numero);
 
-//User3.info();
-//User4.info();
 
 let escolha: number;
 

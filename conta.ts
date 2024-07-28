@@ -5,15 +5,19 @@ export default class Conta{
     protected _saldo:number;
     protected _numero:number; //numero da conta
 
-    constructor(nome:string[], saldo: number = 0){
+    constructor(nome:string[], saldo: number = 0, numero: number){
         this._nome = nome;
         this._saldo = saldo;
-        this._numero = this.gerarNumero();
+        this._numero = numero;
     }
 
     //gerar numero da conta bancária
-    private gerarNumero():number{
-        return Math.floor(Math.random()*100000 + 1);
+    // private gerarNumero():number{
+    //     return Math.floor(Math.random()*100000 + 1);
+    // }
+
+    public get numero(): number{  
+        return this._numero;
     }
 
     get nome(): string[] {
@@ -52,6 +56,6 @@ export default class Conta{
         console.log(`Numero Conta: ${this._numero}`);
         console.log(`Saldo: ${this.saldo}`);
         console.log(`Saldo: ${this.saque}`);
-        console.log(`Saldo: ${this.deposito}`);
+        console.log(`Deposito: ${this.deposito}`);
     }
 }

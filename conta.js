@@ -52,6 +52,8 @@ var Conta = /** @class */ (function () {
         console.log("Titular: ".concat(this._nome));
         console.log("Numero Conta: ".concat(this._numero));
         console.log("Saldo: ".concat(this.saldo));
+        console.log("Saldo: ".concat(this.saque));
+        console.log("Saldo: ".concat(this.deposito));
     };
     return Conta;
 }());

@@ -33,7 +33,7 @@ var PF = /** @class */ (function (_super) {
             _super.prototype.saque.call(this, valor);
         }
         else {
-            console.log("Não foi posspível realizar o saque!");
+            console.log("Não foi possível realizar o saque!");
         }
     };
     PF.prototype.deposito = function (valor) {
@@ -42,7 +42,7 @@ var PF = /** @class */ (function (_super) {
             _super.prototype.deposito.call(this, valor);
         }
         else {
-            console.log("Não foi posspível realizar o depósito!");
+            console.log("Não foi possível realizar o depósito!");
         }
     };
     return PF;
