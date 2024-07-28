@@ -16,17 +16,17 @@ export default class PF extends Conta{
             super.saque(valor)
         }
         else{
-            console.log("Não foi posspível realizar o saque!");
+            console.log("Não foi possível realizar o saque!");
         }
     }
-
+ 
      deposito(valor: number): void {
         if(valor > 0 || valor <= 500){
             console.log(("Deposito realizado!"));
             super.deposito(valor)
         }
         else{
-            console.log("Não foi posspível realizar o depósito!");
+            console.log("Não foi possível realizar o depósito!");
         }
     }
 

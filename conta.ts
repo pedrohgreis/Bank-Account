@@ -51,6 +51,7 @@ export default class Conta{
         console.log(`Titular: ${this._nome}`);
         console.log(`Numero Conta: ${this._numero}`);
         console.log(`Saldo: ${this.saldo}`);
-        
+        console.log(`Saldo: ${this.saque}`);
+        console.log(`Saldo: ${this.deposito}`);
     }
 }

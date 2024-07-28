@@ -23,8 +23,7 @@ do {
     console.log("-----------------------------");
     console.log("- 1 SACAR                   -");
     console.log("- 2 DEPOSITAR               -");
-    console.log("- 3 VISUALIZAR DADOS              -");
-    console.log("- 4 EXTRATO                 -");
+    console.log("- 3 EXTRATO                 -");
     console.log("- 0 SAIR                    -");
     console.log("-----------------------------");
 
@@ -33,18 +32,22 @@ do {
     switch (escolha) {
         case 1:
             //saque
-            console.log("Digite o valor do saque");
+            const valorSaque = parseFloat(userPrompt("Digite o valor do saque: ") || "0");
+            User3.saque(valorSaque);
+            User4.saque(valorSaque);
             
             break;
         case 2:
             //deposito
-            console.log("Digite o valor do deposito");
+            const valorDeposito = parseFloat(userPrompt("Digite o valor do deposito: ") || "0");
+            User3.saque(valorDeposito);
+            User4.saque(valorDeposito);
+            
             break;
         case 3:
-            //visualizar
-            break;
-        case 4:
             //extrato
+            User1.info();
+            User2.info();
             break;
         case 0:
             //sair
