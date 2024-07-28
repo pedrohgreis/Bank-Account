@@ -1,22 +1,20 @@
-import promptSync from 'prompt-sync';
-import Conta from './conta';
-import PJ from './PJ';
-import PF from './PF';
-
-
-const userPrompt = promptSync();
-
-const User1: Conta = new Conta(["João"], 2500);
-const User2: Conta = new Conta(["Thiago"], 8500);
-
-const User3: PJ = new PJ("12.345.678/0001-99", User1.nome, User1.saldo);
-const User4: PF = new PF("056.787.985-09", User2.nome, User2.saldo);
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var prompt_sync_1 = __importDefault(require("prompt-sync"));
+var conta_1 = __importDefault(require("./conta"));
+var PJ_1 = __importDefault(require("./PJ"));
+var PF_1 = __importDefault(require("./PF"));
+var userPrompt = (0, prompt_sync_1.default)();
+var User1 = new conta_1.default(["João"], 2500);
+var User2 = new conta_1.default(["Thiago"], 8500);
+var User3 = new PJ_1.default("12.345.678/0001-99", User1.nome, User1.saldo);
+var User4 = new PF_1.default("056.787.985-09", User2.nome, User2.saldo);
 //User3.info();
 //User4.info();
-
-let escolha: number;
-
+var escolha;
 do {
     console.log("-----------------------------");
     console.log("---SELECIONE UMA OPÇÃO---");
@@ -27,14 +25,11 @@ do {
     console.log("- 4 EXTRATO                 -");
     console.log("- 0 SAIR                    -");
     console.log("-----------------------------");
-
     escolha = parseInt(userPrompt("Escolha uma opção: ") || "0");
-
     switch (escolha) {
         case 1:
             //saque
             console.log("Digite o valor do saque");
-            
             break;
         case 2:
             //deposito
@@ -54,6 +49,4 @@ do {
             //erouuu
             break;
     }
-
 } while (1);
-
