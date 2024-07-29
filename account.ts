@@ -16,10 +16,11 @@ const User4: PF = new PF("056.787.985-09", User2.nome, User2.saldo, User2.numero
 let escolha: number;
 
 let login: number;
-let xd: number = 0;
+let usuario: number = 0;
+let xd: number;
 let continueLoop: boolean = true;
 
-do {
+/*do {
     console.log("-----------------------------");
     console.log("Digite seu login:            ");
     console.log("-----------------------------");
@@ -34,7 +35,7 @@ do {
         console.log("Erro404!");
     }
 } while (continueLoop);
-
+*/
 
 do {
     console.log("-----------------------------");
@@ -46,21 +47,38 @@ do {
     console.log("- 0 SAIR                    -");
     console.log("-----------------------------");
 
-    escolha = parseInt(userPrompt("Escolha uma opção: ") || "0");
+    escolha = parseInt(userPrompt("Escolha uma opção: "));
 
     switch (escolha) {
         case 1:
             //saque
-            const valorSaque = parseFloat(userPrompt("Digite o valor do saque: ") || "0");
-            User3.saque(valorSaque);
-            User4.saque(valorSaque);
-            
+            const valorSaque = parseFloat(userPrompt("Digite o valor do saque: ") || "0"); //PERGUNTAR || 0
+
+            usuario = parseInt(userPrompt("Escolha uma opção de usuario: 1 João / 2 Thiago: "));
+            if(usuario == 1)
+            {
+                console.log(User3.saque(valorSaque));// USAR USER 3 POIS É A CLASSE PESSOA JURIDICA QUE CONTEM METODOS PUBLICOS
+            }
+            else if(usuario == 2)
+                {
+                    console.log(User3.saque(valorSaque));// USAR USER 4 POIS É A CLASSE PESSOA JURIDICA QUE CONTEM METODOS PUBLICOS
+                }
             break;
         case 2:
             //deposito
-            const valorDeposito = parseFloat(userPrompt("Digite o valor do deposito: ") || "0");
-            User3.saque(valorDeposito);
-            User4.saque(valorDeposito);
+            const valorDeposito = parseFloat(userPrompt("Digite o valor do deposito: "));
+            
+            usuario = parseInt(userPrompt("Escolha uma opção de usuario: 1 João / 2 Thiago: "));
+            if(usuario == 1)
+                {
+                    console.log(User3.deposito(valorDeposito));
+                }
+                else if(usuario == 2)
+                    {
+                        console.log(User4.deposito(valorDeposito));
+                    }
+                break;
+
             
             break;
         case 3:
@@ -78,4 +96,3 @@ do {
     }
 
 } while (1);
-

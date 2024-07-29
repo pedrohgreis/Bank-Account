@@ -21,14 +21,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var conta_1 = __importDefault(require("./conta"));
 var PF = /** @class */ (function (_super) {
     __extends(PF, _super);
-    function PF(cpf, nome, saldo) {
-        var _this = _super.call(this, nome, saldo) || this;
+    function PF(cpf, nome, saldo, numero) {
+        var _this = _super.call(this, nome, saldo, numero) || this;
         _this._cpf = cpf;
         return _this;
     }
     //Métodos
     PF.prototype.saque = function (valor) {
-        if (valor > 0 || valor <= this.saldo || valor <= 300) {
+        if (valor > 0 && valor <= this.saldo && valor <= 300) {
             console.log("Saque realizado!");
             _super.prototype.saque.call(this, valor);
         }
@@ -37,7 +37,7 @@ var PF = /** @class */ (function (_super) {
         }
     };
     PF.prototype.deposito = function (valor) {
-        if (valor > 0 || valor <= 500) {
+        if (valor > 0 && valor <= 500) {
             console.log(("Deposito realizado!"));
             _super.prototype.deposito.call(this, valor);
         }

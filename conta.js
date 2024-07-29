@@ -2,16 +2,23 @@
 //classe pai
 Object.defineProperty(exports, "__esModule", { value: true });
 var Conta = /** @class */ (function () {
-    function Conta(nome, saldo) {
+    function Conta(nome, saldo, numero) {
         if (saldo === void 0) { saldo = 0; }
         this._nome = nome;
         this._saldo = saldo;
-        this._numero = this.gerarNumero();
+        this._numero = numero;
     }
-    //gerar numero da conta bancária
-    Conta.prototype.gerarNumero = function () {
-        return Math.floor(Math.random() * 100000 + 1);
-    };
+    Object.defineProperty(Conta.prototype, "numero", {
+        //gerar numero da conta bancária
+        // private gerarNumero():number{
+        //     return Math.floor(Math.random()*100000 + 1);
+        // }
+        get: function () {
+            return this._numero;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Object.defineProperty(Conta.prototype, "nome", {
         get: function () {
             return this._nome;
@@ -53,7 +60,7 @@ var Conta = /** @class */ (function () {
         console.log("Numero Conta: ".concat(this._numero));
         console.log("Saldo: ".concat(this.saldo));
         console.log("Saldo: ".concat(this.saque));
-        console.log("Saldo: ".concat(this.deposito));
+        console.log("Deposito: ".concat(this.deposito));
     };
     return Conta;
 }());
