@@ -1,98 +1,84 @@
-import promptSync from 'prompt-sync';
-import Conta from './conta';
-import PJ from './PJ';
-import PF from './PF';
+//importações
+import promptSync from 'prompt-sync'; //importa um módulo que captura entradas do usuário
 
+import Conta, { ContaPF, ContaPJ } from './classes';
+const prompt = promptSync(); //cria uma instancia do prompt-sync
 
-const userPrompt = promptSync();
+// lista de clientes
+const contas: Conta[] = [];
 
-const User1: Conta = new Conta(["João"], 2500, 123);
-const User2: Conta = new Conta(["Thiago"], 8500, 456);
+const contaPF1 = new ContaPF("Carlinhos Pinto", 1000, 12345678, '121212', '123.456.789-00');
+const contaPJ1 = new ContaPJ('Empresa Papel e CIA', 50000, 45611223, '121212', '12.345.678/0001-95');
 
-const User3: PJ = new PJ("12.345.678/0001-99", User1.nome, User1.saldo, User1.numero);
-const User4: PF = new PF("056.787.985-09", User2.nome, User2.saldo, User2.numero);
+contas.push(contaPF1, contaPJ1);
 
+//////////////////////////////////////////
 
 let escolha: number;
 
-let login: number;
-let usuario: number = 0;
-let xd: number;
-let continueLoop: boolean = true;
-
-/*do {
-    console.log("-----------------------------");
-    console.log("Digite seu login:            ");
-    console.log("-----------------------------");
-
-    login = parseInt(userPrompt("Digite aqui: ") || "0");
-
-    if (login === 1234) {
-        xd = 1;
-    } else if (login === 4321) {
-        xd = 2;
-    } else {
-        console.log("Erro404!");
-    }
-} while (continueLoop);
-*/
+console.log("-------------------------------------\n" +
+    "|  Bem vindo ao Banco Aspili Getas  |\n" +
+    "| Por favor, insira suas informações|");
 
 do {
-    console.log("-----------------------------");
-    console.log("---SELECIONE UMA OPÇÃO---");
-    console.log("-----------------------------");
-    console.log("- 1 SACAR                   -");
-    console.log("- 2 DEPOSITAR               -");
-    console.log("- 3 EXTRATO                 -");
-    console.log("- 0 SAIR                    -");
-    console.log("-----------------------------");
+    let numeroConta = parseInt(prompt("Número da conta:"), 10); // converte uma string para número inteiro de base decimal
 
-    escolha = parseInt(userPrompt("Escolha uma opção: "));
+    let procuraConta = (numero: number) => contas.findIndex(conta => conta.numero === numero);//aqui pode gossar
+    var indiceConta=procuraConta(numeroConta);
+
+    if (indiceConta == -1) {
+        console.log("\nConta não existente\n");
+        continue;
+    }
+
+    let inputSenha = prompt("Senha da conta: ");
+    if (contas[indiceConta].senha !== inputSenha) {
+        console.log("\nSenha incorreta, operação reiniciada\n");
+        continue;
+    }
+
+    break;
+} while (true);
+
+do {
+    console.log(
+        "|-----------------------------|\n" +
+        "|-----SELECIONE UMA OPÇÃO-----|\n" +
+        "|-----------------------------|\n" +
+        "|- 1 SACAR                   -|\n" +
+        "|- 2 DEPOSITAR               -|\n" +
+        "|- 3 EXTRATO                 -|\n" +
+        "|- 0 SAIR                    -|\n" +
+        "|-----------------------------|");
+
+    escolha = parseInt(prompt("Escolha uma opção: "), 10); // converte uma string para número inteiro de base decimal
 
     switch (escolha) {
         case 1:
-            //saque
-            const valorSaque = parseFloat(userPrompt("Digite o valor do saque: ") || "0"); //PERGUNTAR || 0
-
-            usuario = parseInt(userPrompt("Escolha uma opção de usuario: 1 João / 2 Thiago: "));
-            if(usuario == 1)
-            {
-                console.log(User3.saque(valorSaque));// USAR USER 3 POIS É A CLASSE PESSOA JURIDICA QUE CONTEM METODOS PUBLICOS
+            // sacar
+            let saque = parseFloat(prompt("Digite o valor que deseja sacar: "));
+            if(contas[indiceConta].saldo>=saque){
+                contas[indiceConta].saldo-=saque;
+            }else{
+                console.log("Valor excede seu saldo, operação encerrada");
             }
-            else if(usuario == 2)
-                {
-                    console.log(User3.saque(valorSaque));// USAR USER 4 POIS É A CLASSE PESSOA JURIDICA QUE CONTEM METODOS PUBLICOS
-                }
+
             break;
         case 2:
-            //deposito
-            const valorDeposito = parseFloat(userPrompt("Digite o valor do deposito: "));
-            
-            usuario = parseInt(userPrompt("Escolha uma opção de usuario: 1 João / 2 Thiago: "));
-            if(usuario == 1)
-                {
-                    console.log(User3.deposito(valorDeposito));
-                }
-                else if(usuario == 2)
-                    {
-                        console.log(User4.deposito(valorDeposito));
-                    }
-                break;
-
-            
+            // depositar
+            let deposito = parseFloat(prompt("Digite o valor que deseja sacar: "));
+            contas[indiceConta].saldo+=deposito;
             break;
         case 3:
-            //extrato
-            User1.info();
-            User2.info();
+            // extrato
+            console.log(`${contas[indiceConta].saldo}`);
             break;
         case 0:
-            //sair
-            process.exit(0);
+            process.exit(0); // encerra o processo com código de status 0
             break;
         default:
-            //erouuu
+            console.log("\nDigite uma opção válida\n");
             break;
     }
+} while (true);
 
-} while (1);
